@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <div>{{msg}}</div>
-    <div v-for="post in feed">
+  <div class="columns">
+    <div class="column col-12">{{msg}}</div>
+    <div v-for="post in feed" class="column col-12">
       <post-image v-if="post.type === 'img'"
         :img-data="post">
       </post-image>

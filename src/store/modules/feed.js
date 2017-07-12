@@ -4,13 +4,13 @@ const userModule = {
   state:
   [
     {
-      id: 1,
+      id: 3,
       type: 'img',
       likes: 1,
       user: 'John Smith',
       data: {
         caption: 'This is my cute cat',
-        link: 'http://loremflickr.com/320/320/cat',
+        link: 'http://i.imgur.com/EwoQzuI.jpg',
       },
     },
     {
@@ -23,26 +23,38 @@ const userModule = {
       },
     },
     {
-      id: 3,
+      id: 1,
       type: 'img',
       likes: 1,
       user: 'John Smith',
       data: {
         caption: 'Do you like this cute pup?',
-        link: 'http://loremflickr.com/320/320/dog',
+        link: 'http://i.imgur.com/XsaLqi1.jpg',
       },
     },
   ],
 
   mutations: {
-    [types.USER__MUTATE_FEED](localState, payload) {
-      Object.assign({}, localState, payload);
+    [types.FEED__MUTATE_FEED](localState, payload) {
+      payload.id = localState[0].id + 1 //eslint-disable-line
+      localState.unshift(payload);
     },
   },
 
   actions: {
-    [types.USER__UPDATE_FEED]({ commit }, payload) {
-      commit(types.USER__MUTATE_FEED, payload);
+    [types.FEED__UPDATE_FEED]({ commit }, payload) {
+      let newObj = {};
+      if (payload.type === 'txt') {
+        newObj = {
+          type: 'txt',
+          likes: 0,
+          user: payload.user,
+          data: {
+            content: payload.content,
+          },
+        };
+      }
+      commit(types.FEED__MUTATE_FEED, newObj);
     },
   },
 };

@@ -7,26 +7,21 @@
           <div class="col-3">
             <label class="form-label" for="input-name">Name</label>
           </div>
-          <div class="col-9">
-            <input class="form-input"
-              v-model="name"
-              @keyup="updateUser"
-              type="text"
-              id="input-name"
-              placeholder="Name" />
+          <div class="col-7">
+            <input class="form-input" v-model="name" type="text" id="input-name" placeholder="Name" />
           </div>
         </div>
         <div class="form-group">
           <div class="col-3">
             <label class="form-label" for="input-email">Email</label>
           </div>
-          <div class="col-9">
-            <input class="form-input"
-              v-model="email"
-              @keyup="updateUser"
-              type="text"
-              id="input-email"
-              placeholder="Email" />
+          <div class="col-7">
+            <input class="form-input" v-model="email" type="text" id="input-email" placeholder="Email" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-12">
+            <button @click="joinVuebook" type="button" class="btn btn-primary" :class="{'loading' : loading}">Join</button>
           </div>
         </div>
       </form>
@@ -35,33 +30,34 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
+import router from '@/router';
 import * as types from '@/store/types';
 
 export default {
   data() {
     return {
-      msg: 'Profile',
+      msg: 'Signup',
       name: '',
       email: '',
+      loading: false,
     };
-  },
-  computed: {
-    ...mapState([
-      'user',
-    ]),
   },
   methods: {
     ...mapActions({
       userUpdateUser: types.USER__UPDATE_USER,
     }),
-    updateUser() {
-      this.userUpdateUser({ name: this.name, email: this.email });
+    joinVuebook() {
+      this.loading = true;
+      this.userUpdateUser({
+        name: this.name,
+        email: this.email,
+      })
+      .then(() => {
+        this.loading = false;
+        router.push({ path: 'feed' });
+      });
     },
-  },
-  mounted() {
-    this.name = this.user.name;
-    this.email = this.user.email;
   },
 
 };
