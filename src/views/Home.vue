@@ -51,10 +51,10 @@ export default {
   },
   methods: {
     ...mapActions({
-      feedUpdateFeed: types.FEED__UPDATE_FEED,
+      feedPostNew: types.FEED__POST_NEW,
     }),
     submitPost() {
-      this.feedUpdateFeed({
+      this.feedPostNew({
         user: this.user.name,
         content: this.update,
         type: 'txt',
