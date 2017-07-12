@@ -1,7 +1,14 @@
 <template>
   <div class="container">
     <div class="columns">
-      <div class="column col-12">{{user.name}}'s Vuebook</div>
+      <div class="column col-12">
+        <span class="header">{{user.name}}'s Vuebook</span>
+      </div>
+      <div class="column col-12">
+        <router-link :to="{ name: 'Feed' }">feed</router-link>
+        /
+        <router-link :to="{ name: 'Profile' }">profile</router-link>
+      </div>
       <div class="column col-2"></div>
       <div class="column col-8">
         <div class="form-group">
@@ -11,7 +18,7 @@
       <div class="column col-2"></div>
       <div class="column col-3"></div>
       <div class="column col-6">
-        <feed></feed>
+        <router-view class="view"></router-view>
       </div>
       <div class="column col-3"></div>
     </div>
@@ -20,12 +27,8 @@
 
 <script>
 import { mapState } from 'vuex';
-import Feed from './Feed';
 
 export default {
-  components: {
-    Feed,
-  },
   data() {
     return {
     };
@@ -40,4 +43,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.header {
+  font-size: 2.5em;
+}
 </style>

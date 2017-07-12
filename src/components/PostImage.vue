@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img :src="imgData.data.link">
+    <img class="image" :src="imgData.data.link">
     <div class="caption">{{imgData.data.caption}}</div>
     <div class="postedBy">Posted by: {{imgData.user}}</div>
     <div class="likes">Likes: {{imgData.likes}}</div>
@@ -21,8 +21,12 @@ export default {
 <style scoped>
 .container {
   background-color: lightgrey;
-  padding: 15px;
+  padding: 20px;
   margin: 10px 0;
+}
+.image {
+  height: auto;
+  max-width: 100%;
 }
 .caption {
   font-size: 1.3em;

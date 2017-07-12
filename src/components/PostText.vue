@@ -25,7 +25,7 @@ export default {
 <style scoped>
 .container {
   background-color: lightgrey;
-  padding: 15px;
+  padding: 20px;
   margin: 10px 0;
 }
 .content {

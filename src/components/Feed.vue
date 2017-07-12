@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 import PostImage from './PostImage';
 import PostText from './PostText';
 
@@ -24,38 +26,12 @@ export default {
   data() {
     return {
       msg: 'Feed',
-      feed: [
-        {
-          id: 1,
-          type: 'img',
-          likes: 1,
-          user: 'John Smith',
-          data: {
-            caption: 'This is my cute pup',
-            link: 'http://loremflickr.com/320/320/dog',
-          },
-        },
-        {
-          id: 2,
-          type: 'txt',
-          likes: 1,
-          user: 'Robert Davenport',
-          data: {
-            content: 'Thank you for all the birtday wishes',
-          },
-        },
-        {
-          id: 3,
-          type: 'img',
-          likes: 1,
-          user: 'John Smith',
-          data: {
-            caption: 'Do you like this cute pup?',
-            link: 'http://loremflickr.com/320/320/dog',
-          },
-        },
-      ],
     };
+  },
+  computed: {
+    ...mapState([
+      'feed',
+    ]),
   },
 };
 </script>
