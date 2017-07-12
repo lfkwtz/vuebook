@@ -1,5 +1,5 @@
 <template>
-  <div class="container" @dblclick="test">
+  <div class="container">
     <div class="content">{{txtData.data.content}}</div>
     <div class="postedBy">Posted by: {{txtData.user}}</div>
     <div class="likes">Likes: {{txtData.likes}}</div>
@@ -12,11 +12,6 @@ export default {
   data() {
     return {
     };
-  },
-  methods: {
-    test() {
-      console.log('hi');
-    },
   },
 };
 </script>

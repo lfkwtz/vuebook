@@ -2,8 +2,7 @@
   <div class="container">
     <div class="columns">
       <div class="column col-12">
-        <span v-if="user.name" class="header">{{user.name}}'s Vuebook</span>
-        <span v-else class="header">Join Vuebook</span>
+        <main-header></main-header>
       </div>
       <div v-if="user.name" class="container">
         <div class="columns">
@@ -38,7 +37,12 @@
 import { mapState, mapActions } from 'vuex';
 import * as types from '@/store/types';
 
+import MainHeader from '@/components/MainHeader';
+
 export default {
+  components: {
+    MainHeader,
+  },
   data() {
     return {
       update: '',
@@ -66,7 +70,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.header {
-  font-size: 2.5em;
-}
 </style>
