@@ -35,14 +35,14 @@ const userModule = {
   ],
 
   mutations: {
-    [types.FEED__MUTATE_FEED](localState, payload) {
+    [types.FEED__UNSHIFT_FEED](localState, payload) {
       payload.id = localState[0].id + 1 //eslint-disable-line
       localState.unshift(payload);
     },
   },
 
   actions: {
-    [types.FEED__UPDATE_FEED]({ commit }, payload) {
+    [types.FEED__POST_NEW]({ commit }, payload) {
       let newObj = {};
       if (payload.type === 'txt') {
         newObj = {
@@ -54,7 +54,7 @@ const userModule = {
           },
         };
       }
-      commit(types.FEED__MUTATE_FEED, newObj);
+      commit(types.FEED__UNSHIFT_FEED, newObj);
     },
   },
 };
