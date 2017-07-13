@@ -4,7 +4,7 @@ const userModule = {
   state:
   [
     {
-      id: 3,
+      id: 2,
       type: 'img',
       likes: 1,
       user: 'John Smith',
@@ -14,7 +14,7 @@ const userModule = {
       },
     },
     {
-      id: 2,
+      id: 1,
       type: 'txt',
       likes: 1,
       user: 'Robert Davenport',
@@ -23,7 +23,7 @@ const userModule = {
       },
     },
     {
-      id: 1,
+      id: 0,
       type: 'img',
       likes: 1,
       user: 'John Smith',
@@ -39,6 +39,9 @@ const userModule = {
       payload.id = localState[0].id + 1 //eslint-disable-line
       localState.unshift(payload);
     },
+    // [types.FEED__MUTATE_LIKES](localState, payload) {
+    //   localState[localState.length - 1 - payload.id].likes += 1; //eslint-disable-line
+    // },
   },
 
   actions: {
@@ -56,6 +59,9 @@ const userModule = {
       }
       commit(types.FEED__UNSHIFT_FEED, newObj);
     },
+    // [types.FEED__ADD_LIKE]({ commit }, payload) {
+    //   commit(types.FEED__MUTATE_LIKES, payload);
+    // },
   },
 };
 
