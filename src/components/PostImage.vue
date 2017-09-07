@@ -1,5 +1,5 @@
 <template>
-  <div class="container" @dblclick="addLike">
+  <div class="container" @dblclick="feedAddLike({id: imgData.id})">
     <img class="image" :src="imgData.data.link">
     <div class="caption">{{imgData.data.caption}}</div>
     <div class="postedBy">Posted by: {{imgData.user}}</div>
@@ -8,8 +8,8 @@
 </template>
 
 <script>
-// import { mapActions } from 'vuex';
-// import * as types from '@/store/types';
+import { mapActions } from 'vuex';
+import * as types from '@/store/types';
 
 export default {
   props: ['imgData'],
@@ -17,16 +17,11 @@ export default {
     return {
     };
   },
-  // methods: {
-  //   ...mapActions({
-  //     feedAddLike: types.FEED__ADD_LIKE,
-  //   }),
-  //   addLike() {
-  //     this.feedAddLike({
-  //       id: this.imgData.id,
-  //     });
-  //   },
-  // },
+  methods: {
+    ...mapActions({
+      feedAddLike: types.FEED__ADD_LIKE,
+    }),
+  },
 };
 </script>
 

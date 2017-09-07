@@ -63,6 +63,7 @@ export default {
         content: this.update,
         type: 'txt',
       });
+      this.update = '';
     },
   },
 };

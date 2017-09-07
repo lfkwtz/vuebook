@@ -39,9 +39,9 @@ const userModule = {
       payload.id = localState[0].id + 1 //eslint-disable-line
       localState.unshift(payload);
     },
-    // [types.FEED__MUTATE_LIKES](localState, payload) {
-    //   localState[localState.length - 1 - payload.id].likes += 1; //eslint-disable-line
-    // },
+    [types.FEED__MUTATE_LIKES](localState, payload) {
+      localState[localState.length - 1 - payload.id].likes += 1; //eslint-disable-line
+    },
   },
 
   actions: {
@@ -59,9 +59,9 @@ const userModule = {
       }
       commit(types.FEED__UNSHIFT_FEED, newObj);
     },
-    // [types.FEED__ADD_LIKE]({ commit }, payload) {
-    //   commit(types.FEED__MUTATE_LIKES, payload);
-    // },
+    [types.FEED__ADD_LIKE]({ commit }, payload) {
+      commit(types.FEED__MUTATE_LIKES, payload);
+    },
   },
 };
 

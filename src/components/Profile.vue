@@ -10,7 +10,7 @@
           <div class="col-9">
             <input class="form-input"
               v-model="name"
-              @keyup="updateUser"
+              @keyup="userUpdateUser({ name, email })"
               type="text"
               id="input-name"
               placeholder="Name" />
@@ -23,7 +23,7 @@
           <div class="col-9">
             <input class="form-input"
               v-model="email"
-              @keyup="updateUser"
+              @keyup="userUpdateUser({ name, email })"
               type="text"
               id="input-email"
               placeholder="Email" />
@@ -55,9 +55,6 @@ export default {
     ...mapActions({
       userUpdateUser: types.USER__UPDATE_USER,
     }),
-    updateUser() {
-      this.userUpdateUser({ name: this.name, email: this.email });
-    },
   },
   mounted() {
     this.name = this.user.name;

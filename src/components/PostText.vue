@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container"  @dblclick="feedAddLike({id: txtData.id})">
     <div class="content">{{txtData.data.content}}</div>
     <div class="postedBy">Posted by: {{txtData.user}}</div>
     <div class="likes">Likes: {{txtData.likes}}</div>
@@ -7,11 +7,19 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+import * as types from '@/store/types';
+
 export default {
   props: ['txtData'],
   data() {
     return {
     };
+  },
+  methods: {
+    ...mapActions({
+      feedAddLike: types.FEED__ADD_LIKE,
+    }),
   },
 };
 </script>
