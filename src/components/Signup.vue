@@ -53,10 +53,10 @@ export default {
         name: this.name,
         email: this.email,
       })
-      .then(() => {
-        this.loading = false;
-        router.push({ path: 'feed' });
-      });
+        .then(() => {
+          this.loading = false;
+          router.push({ path: 'feed' });
+        });
     },
   },
 
