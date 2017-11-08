@@ -6,8 +6,6 @@ import App from './App';
 import store from './store';
 import router from './router';
 
-require('spectre.css');
-
 Vue.config.productionTip = false;
 Vue.config.devtools = true; // allow devtools in production
 
